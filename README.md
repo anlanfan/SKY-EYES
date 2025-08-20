@@ -46,3 +46,53 @@
 - 当硬件连接完成时,将连接好的开发板放入已经打印好的3D模型中
 
 ## 
+
+
+
+
+# Sky Eye Head Tracking System
+## Work Introduction
+This project aims to develop an innovative UAV sky eye head tracking system, which integrates the human head with the UAV gimbal camera and related task modules, greatly improving the operation efficiency. The innovation of this project lies in using the movement of the head to control the movement of the UAV gimbal and related task modules. Different from the traditional operation using potentiometer pulleys, it integrates human eyes with the UAV gimbal camera and related task modules, realizing the function of single-person operation of the UAV and task modules. The system consists of four parts: UAV platform, data acquisition module, image transmission module and UAV operation device. The data acquisition module adopts Arduino nano development board with mpu6050 electronic gyroscope module, HC05 Bluetooth sensor module and other accessories to realize data acquisition and transmission. The UAV platform uses f550 hexacopter UAV and DJI NAZA flight control module and other equipment. The UAV operation device and image transmission module use opentx operating system and devices capable of receiving 5.8Ghz image transmission signals respectively.
+
+
+## Components of Each System
+- The first-generation data acquisition module (with external power supply and wired connection)
+  
+
+
+
+- The second-generation data acquisition module (with built-in power supply and wireless connection, including the main module of the data acquisition module and the slave module of the data acquisition module)
+ 
+ 
+ 
+- F550 hexacopter UAV (with the ability to drop rescue materials)
+ 
+
+
+ 
+- Target indication module (including laser indication and LED white light indication)
+ 
+ 
+
+- Data acquisition module development board
+ 
+## Installation and Use
+
+- Aircraft end
+  The aircraft end uses a two-axis or three-axis gimbal controlled by PWM signal, and the system outputs PWM signal or PPM signal by default.
+
+  
+- Ground end
+
+  The ground end is divided into two parts: remote control module and head-wearing module
+
+  Head-wearing module
+
+  Arduino nano 33 BLE, mpu 6050, HC-05 Bluetooth module
+
+  Remote control module
+
+  Arduino nano 33 BLE, HC-05 Bluetooth module
+
+
+- When the hardware connection is completed, put the connected development board into the printed 3D model
