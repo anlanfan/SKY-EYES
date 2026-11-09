@@ -45,6 +45,12 @@
 
 - 当硬件连接完成时,将连接好的开发板放入已经打印好的3D模型中
 
+## V3 规划：DJI Goggles 2 原生头部追踪（研究阶段）
+
+> **V3 Status: Research / Feasibility Study**
+
+V3 计划研究能否直接读取 DJI Goggles 2 内置的头部姿态数据，用来控制第三方云台，从而不再需要额外的头戴 IMU 模块或 AirPods。目前只处于可行性研究阶段，**尚未实现，也没有做过硬件验证**。详见 [V3 技术研究与开发规划](docs/V3_DJI_Goggles2_Research.md)。
+
 ## 
 
 
