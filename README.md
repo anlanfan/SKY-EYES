@@ -16,6 +16,7 @@
 - 接收端把角度转换成 8 通道 PPM 信号，控制两轴或三轴云台。
 - 配套 F550 六旋翼无人机、DJI NAZA 飞控、OpenTX 遥控器和 5.8 GHz 图传。
 - 仓库中保留了全部源代码、3D 外壳模型、支撑材料和测试视频（见下方「仓库目录」）。V2、V3 不修改 V1 的源代码和硬件资料。
+- **V1 优化版代码**：[v1-optimized/](v1-optimized/README.md)。在不改硬件、不改接口的前提下，修复了数组越界、调试打印拖慢 PPM 等问题，并新增定时器生成 PPM、失控保护。⚠️ **这份代码未经验证**：没有编译过，也没有在硬件上运行过。原始代码保持不变。
 
 ### V2：AirPods 头部追踪（开发中）
 
@@ -45,6 +46,10 @@ SKY-EYES/
 ├── 天眼头追系统支撑材料1.docx        # V1 支撑材料
 ├── 第一代数据采集模块开发板测试视频.mp4
 ├── 第二代数据采集模块与六旋翼无人机测试视频.mp4
+├── v1-optimized/                  # V1 优化版代码（⚠️ 未经验证）
+│   ├── README.md                  # 修改说明与验证步骤
+│   ├── sketch_jan09a_optimized/   # 头戴端优化版
+│   └── sky_eyes_slave_optimized/  # 接收端优化版
 ├── v2/
 │   └── README.md                  # V2 设计文档：AirPods 头部追踪
 └── v3/
@@ -112,7 +117,7 @@ SKY-EYES/
 
 | Version | Status | Head pose source | Docs |
 |---|---|---|---|
-| **V1** | ✅ Completed (legacy) | Custom head unit (Arduino + MPU6050 + HC-05) | This page |
+| **V1** | ✅ Completed (legacy) | Custom head unit (Arduino + MPU6050 + HC-05) | This page; optimized code (⚠️ unverified): [v1-optimized/](v1-optimized/README.md) |
 | **V2** | 🚧 In development (design stage) | Apple AirPods via AirTracker → Wi-Fi UDP → ESP32 | [v2/README.md](v2/README.md) |
 | **V3** | 🔬 Research / Feasibility Study | DJI Goggles 2 built-in sensors (not yet known if accessible) | [v3/README.md](v3/README.md) |
 
