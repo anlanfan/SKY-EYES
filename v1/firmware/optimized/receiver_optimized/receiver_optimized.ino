@@ -1,7 +1,7 @@
 // SkyEye V1 receiver - optimized version.
 //
 // !!! UNVERIFIED: this sketch has NOT been compiled, uploaded or tested on hardware. !!!
-// See ../README.md before use. The original sketch is ../../sky_eyes_slave.ino.
+// See ../README.md before use. The original sketch is ../../receiver/receiver.ino.
 //
 // Hardware and interfaces are unchanged from the original:
 //   HC-05 on the hardware Serial port at 9600 baud, receiving the head unit's bytes

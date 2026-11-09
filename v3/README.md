@@ -45,7 +45,7 @@ V3 is a **research / feasibility study**. It asks whether a third-party program 
 
 相关文档：
 
-- V1：仓库根目录 [README.md](../README.md) 以及 `.ino` 源代码
+- V1：[v1/README.md](../v1/README.md)（源代码、3D 模型和测试视频都在 `v1/` 中）
 - V2：[v2/README.md](../v2/README.md)
 
 ---

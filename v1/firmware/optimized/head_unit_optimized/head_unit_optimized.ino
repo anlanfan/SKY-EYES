@@ -1,7 +1,7 @@
 // SkyEye V1 head unit - optimized version.
 //
 // !!! UNVERIFIED: this sketch has NOT been compiled, uploaded or tested on hardware. !!!
-// See ../README.md before use. The original sketch is ../../sketch_jan09a.ino.
+// See ../README.md before use. The original sketch is ../../head_unit/head_unit.ino.
 //
 // Hardware and wire format are unchanged from the original:
 //   MPU6050 on I2C, HC-05 on the hardware Serial port at 9600 baud.

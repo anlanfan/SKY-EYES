@@ -10,7 +10,7 @@
 >
 >   这两项检查**不能代替**真实编译和硬件测试。
 > - 首次使用请**拆下螺旋桨**，先在地面测试台上确认云台的动作方向和范围。
-> - 原始代码 [`../sketch_jan09a.ino`](../sketch_jan09a.ino)、[`../sky_eyes_slave.ino`](../sky_eyes_slave.ino) **保持不变**，随时可以换回去。
+> - 原始代码 [`../head_unit/head_unit.ino`](../head_unit/head_unit.ino)、[`../receiver/receiver.ino`](../receiver/receiver.ino) **保持不变**，随时可以换回去。
 
 ---
 
@@ -18,8 +18,8 @@
 
 | 文件 | 对应的原始文件 | 作用 |
 |---|---|---|
-| [`sketch_jan09a_optimized/sketch_jan09a_optimized.ino`](sketch_jan09a_optimized/sketch_jan09a_optimized.ino) | `sketch_jan09a.ino` | 头戴端：读取 MPU6050，通过 HC-05 发送 |
-| [`sky_eyes_slave_optimized/sky_eyes_slave_optimized.ino`](sky_eyes_slave_optimized/sky_eyes_slave_optimized.ino) | `sky_eyes_slave.ino` | 接收端：接收角度，在 D2 输出 PPM |
+| [`head_unit_optimized/head_unit_optimized.ino`](head_unit_optimized/head_unit_optimized.ino) | `../head_unit/head_unit.ino`（原名 `sketch_jan09a.ino`） | 头戴端：读取 MPU6050，通过 HC-05 发送 |
+| [`receiver_optimized/receiver_optimized.ino`](receiver_optimized/receiver_optimized.ino) | `../receiver/receiver.ino`（原名 `sky_eyes_slave.ino`） | 接收端：接收角度，在 D2 输出 PPM |
 
 Arduino IDE 要求 `.ino` 文件放在同名文件夹里，所以每个程序单独一个文件夹。
 
@@ -32,7 +32,7 @@ Arduino IDE 要求 `.ino` 文件放在同名文件夹里，所以每个程序单
 
 ## 3. 修改内容
 
-### 头戴端 `sketch_jan09a_optimized.ino`
+### 头戴端 `head_unit_optimized.ino`
 
 | # | 修改 | 原因 |
 |---|---|---|
@@ -41,7 +41,7 @@ Arduino IDE 要求 `.ino` 文件放在同名文件夹里，所以每个程序单
 | H3 | 删除没有用到的代码：发送之后才执行的两行 `map()`，以及被注释掉的 `ppmsig_post()`、`chnum[]` | 这些代码不影响输出，删掉后程序更清楚 |
 | H4 | 修正注释（原注释的奇偶写反了），把重复逻辑整理成 `encodePitch()` / `encodeYaw()`，数值改成命名常量 | 方便阅读 |
 
-### 接收端 `sky_eyes_slave_optimized.ino`
+### 接收端 `receiver_optimized.ino`
 
 | # | 修改 | 原因 |
 |---|---|---|
@@ -92,4 +92,4 @@ Arduino IDE 要求 `.ino` 文件放在同名文件夹里，所以每个程序单
 5. **云台**：拆下螺旋桨，接上云台，确认方向、行程和中位与原版一致。
 6. **偏航漂移**：和原版对比静止状态下偏航的漂移情况。H2 让 `mpu.update()` 调用更频繁，效果取决于 `MPU6050_light` 库内部计算时间间隔的方式，需要实测确认。
 
-如果验证中发现问题，直接换回仓库根目录的原始代码即可。
+如果验证中发现问题，直接换回 `v1/firmware/head_unit/`、`v1/firmware/receiver/` 中的原始代码即可。

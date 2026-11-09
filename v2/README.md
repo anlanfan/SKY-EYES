@@ -34,8 +34,8 @@ SkyEye lets an operator steer a drone camera gimbal by moving their head. V1 (20
 
 | 类别 | 内容 | 状态 |
 |---|---|---|
-| **V1 已有** | 头戴采集模块程序 `sketch_jan09a.ino`、接收端 PPM 输出程序 `sky_eyes_slave.ino` | ✅ 已有（历史版本，保留不改） |
-| **V1 已有** | 3D 外壳模型（`master.stl`、`slave.stl`、`无.stl`）、支撑材料文档、测试视频 | ✅ 已有 |
+| **V1 已有** | 头戴采集模块程序 `v1/firmware/head_unit/head_unit.ino`、接收端 PPM 输出程序 `v1/firmware/receiver/receiver.ino` | ✅ 已有（历史版本，保留不改） |
+| **V1 已有** | 3D 外壳模型（`v1/hardware/`）、支撑材料文档（`v1/docs/`）、测试视频（`v1/media/`） | ✅ 已有 |
 | **V2 已验证** | 在 MacBook 上运行 AirTracker，初步确认能实时追踪头部 | ✅ 初步确认（未做定量测试） |
 | **V2 开发中** | V2 架构设计与文档（本文档） | 🚧 进行中 |
 | **V2 未开始** | Python 接收并解析 AirTracker 的 UDP 数据 | ⏳ 未开始 |
@@ -63,8 +63,8 @@ MPU6050 ──I²C──▶ Arduino（头戴端）──UART 9600──▶ HC-05
 
 | 文件 | 作用 |
 |---|---|
-| `sketch_jan09a.ino` | 头戴端：用 `MPU6050_light` 读取 Y 轴（俯仰）和 Z 轴（偏航）角度，加 90° 后取整；用奇偶性区分两个轴（俯仰发偶数、偏航发奇数），每个轴占 1 字节，经串口发给 HC-05 |
-| `sky_eyes_slave.ino` | 接收端：按奇偶性把收到的字节分回两个轴，映射成脉宽，在 D2 输出 8 通道 PPM。第 1–6 通道固定为 1500 µs（占位），第 7、8 通道是头部的两个轴 |
+| `head_unit.ino`（原 `sketch_jan09a.ino`） | 头戴端：用 `MPU6050_light` 读取 Y 轴（俯仰）和 Z 轴（偏航）角度，加 90° 后取整；用奇偶性区分两个轴（俯仰发偶数、偏航发奇数），每个轴占 1 字节，经串口发给 HC-05 |
+| `receiver.ino`（原 `sky_eyes_slave.ino`） | 接收端：按奇偶性把收到的字节分回两个轴，映射成脉宽，在 D2 输出 8 通道 PPM。第 1–6 通道固定为 1500 µs（占位），第 7、8 通道是头部的两个轴 |
 | `*.stl` | 头戴端 / 接收端的 3D 打印外壳 |
 
 ### 3.3 V1 的局限（来自代码阅读，未经实测）
@@ -78,7 +78,7 @@ MPU6050 ──I²C──▶ Arduino（头戴端）──UART 9600──▶ HC-05
 5. **硬件依赖**：需要专门制作、单独供电的头戴设备。
 6. **待确认**：README 写的是 Arduino Nano 33 BLE，但代码直接用 `Serial` 连接 HC-05，这更符合经典 Arduino Nano 的接法（Nano 33 BLE 的 `Serial` 是 USB 口）。实际用的是哪块板，需要作者确认。
 
-> V1 的所有文件都原样保留在仓库根目录，V2 不修改也不重构 V1 的程序。
+> V1 的所有文件都保留在 [`v1/`](../v1/README.md) 目录中，V2 不修改也不重构 V1 的程序。
 
 ---
 
@@ -228,17 +228,12 @@ ESP32 规则（计划）：
 
 ## 8. 目录结构
 
-V1 的文件**全部留在原位置不动**，V2 的内容集中放在 `v2/` 目录下：
+V1 的文件都在 `v1/` 目录中，V2 的内容集中放在 `v2/` 目录下：
 
 ```
 SKY-EYES/
-├── README.md                     # V1 README（审核通过后再决定是否更新、怎么更新）
-├── sketch_jan09a.ino             # V1 头戴端程序（保留，不修改）
-├── sky_eyes_slave.ino            # V1 接收端程序（保留，不修改）
-├── master.stl / slave.stl / 无.stl  # V1 3D 外壳模型
-├── 天眼头追系统支撑材料1.docx       # V1 支撑材料
-├── 第一代数据采集模块开发板测试视频.mp4
-├── 第二代数据采集模块与六旋翼无人机测试视频.mp4
+├── README.md                     # 项目首页
+├── v1/                           # V1 源代码、3D 模型、支撑材料、测试视频（保留，不修改）
 │
 └── v2/
     ├── README.md                 # 本文档
