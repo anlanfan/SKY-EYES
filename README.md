@@ -39,6 +39,7 @@ flowchart LR
 ```
 SKY-EYES/
 ├── README.md          # 项目首页（本页）
+├── LICENSE            # MIT 许可证
 ├── assets/            # 首页和文档用的图片
 ├── v1/                # V1：已完成的历史版本
 │   ├── README.md      #   V1 完整介绍（中英文）
@@ -60,4 +61,6 @@ SkyEye lets an operator steer a drone camera gimbal by moving their head.
 
 ## License
 
-待定（To be decided）。在添加许可证之前，仓库内容默认保留所有权利。
+本项目使用 [MIT License](LICENSE)。
+
+This project is licensed under the [MIT License](LICENSE).

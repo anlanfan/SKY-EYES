@@ -334,4 +334,4 @@ SKY-EYES/
 
 ## 13. 许可证
 
-待定。仓库目前没有 LICENSE 文件。
+本项目使用 [MIT License](../LICENSE)。
